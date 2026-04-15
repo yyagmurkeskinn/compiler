@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "ast.h"
 
 extern FILE *yyin;
 int yyparse(void);
+extern ASTNode *root;
 
 int main(int argc, char **argv)
 {
@@ -19,6 +21,16 @@ int main(int argc, char **argv)
 
     if (yyparse() == 0) {
         printf("Parsing successful.\n");
+
+        if (root != NULL) {
+            printf("AST created successfully.\n");
+
+            printf("\n=== AST OUTPUT ===\n");
+            print_ast(root, 0);
+
+            printf("\n=== PRETTY PRINT OUTPUT ===\n");
+            print_pretty(root, 0);
+        }
     } else {
         printf("Parsing failed.\n");
     }

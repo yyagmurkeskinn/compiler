@@ -5,8 +5,8 @@ CFLAGS = -Wall -g
 
 all: parser
 
-parser: src/parser.tab.c src/lex.yy.c src/main.c
-	$(CC) $(CFLAGS) src/parser.tab.c src/lex.yy.c src/main.c -o parser
+parser: src/parser.tab.c src/lex.yy.c src/main.c src/ast.c
+	$(CC) $(CFLAGS) src/parser.tab.c src/lex.yy.c src/main.c src/ast.c -o parser
 
 src/parser.tab.c src/parser.tab.h: src/parser.y
 	$(BISON) -d -o src/parser.tab.c src/parser.y
