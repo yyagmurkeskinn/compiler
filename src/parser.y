@@ -138,7 +138,7 @@ function_decl
             $$->left = $4;
             $$->right = $9;
 
-            if ($6 != NULL) {
+            if ($6 != NULL && $4 != NULL) {
                 $4->next = $6;
             }
         }
